@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+
+
+
+<h3>dashboard</h3>
+<p> welcome to the Video App, <h4>{{request.user.username}}</h4></p><hr>
+ <div class="container">
+  <div class="row">
+    <div class="col">
+    <th ><a href ="{% url 'video:addvideo' %}" class="btn btn-danger"> video upload</a></th>
+    </div>
+   
+  </div>
+
+  
+   <hr><hr>
+ 
+
+ 
+
+
+<div class="container-fluid pb-video-container">
+   {% for vi in videos %}
+ <h3 class= "text-center mt-2 mt-2">{{vi.caption}}</h3>
+    <div class="col-md-10 col-md-offset-1">
+<video width="900" height="500" controls>
+  <source src="{{vi.video.url}}" type="video/mp4">
+</video>
+    <h5>{{vi.created_date}}</h5>         
+    <th ><a href ="{% url 'video:update' vi.id %}}" class="btn btn-danger"> update</a></th>
+      <th><a href ="{% url 'video:delete' vi.id %}" class="btn btn-danger" >delete</a></th>
+           </div>
+        
+ 
+ {% endfor %}
+  
+    
+  </div>
+ 
+{% endblock content %}

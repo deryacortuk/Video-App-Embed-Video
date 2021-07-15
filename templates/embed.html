@@ -1,0 +1,25 @@
+ {% extends "layout.html" %}
+ {% load embed_video_tags %}
+
+
+{% block content %}
+
+<hr><hr>
+
+<div class="container-fluid pb-video-container">
+
+{% for item in videos  %}
+
+
+
+<div class="embed-responsive embed-responsive-21by9">
+
+<div class = "px-3 mb-5">
+
+{% video item.url '854x480' %}
+<div class="d-flex justify-content-start">  {{item.title}}</div>
+</div>
+
+{% endfor %}
+</div>
+{% endblock content %}
